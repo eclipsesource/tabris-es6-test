@@ -1,0 +1,24 @@
+{
+  "name": "tabris-es6-test",
+  "version": "0.0.1",
+  "main": "src/main.js",
+  "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eclipsesource/tabris-es6-test.git"
+  },
+  "scripts": {
+    "lint": "jshint",
+    "build": "mkdir -p build/src/ && cp -a package.json node_modules/ src/ build/ && babel --retain-lines --out-dir build/src/ src/",
+    "serve": "cd build && hs -c-1"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.5.0",
+    "tabris": "https://tabrisjs.com/downloads/nightly/tabris.tgz"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.6.4",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.6.4"
+  }
+}
