@@ -1,22 +1,20 @@
-let promiseBefore = Promise;
-let t0 = Date.now();
-require("babel-polyfill/dist/polyfill.min.js");
-let t1 = Date.now();
-let promiseAfter = Promise;
-
-require("whatwg-fetch");
-
-import MainPage from "./MainPage.js";
-
-let page = new MainPage().open();
-
-page.addLabel(`
-Time to load polyfill: ${t1 - t0} ms.
-Promise was of type ${typeof promiseBefore}.
-Promise was ${promiseBefore === promiseAfter ? 'not replaced' : 'replaced'} by the polyfill.
-`.trim());
-
-fetch("https://freegeoip.net/json/")
-  .then(res => res.json())
-  .then(json => page.addLabel(`IP: ${json.ip}, City: ${json.city}`))
-  .catch(err => page.addLabel(`ERROR: ${err}`));
+"use strict";
+var t0, t1;
+t0 = Date.now();
+var tabris_ng_1 = require('./tabris-ng');
+t1 = Date.now();
+console.log("loaded tabris-ng in " + (t1 - t0) + " ms");
+var app_components_1 = require('./app.components');
+var tabris = require('tabris');
+t0 = Date.now();
+console.log('BOOTSTRAPPING...');
+tabris_ng_1.bootstrap(app_components_1.AppComponent, []).then(function (appRef) {
+    console.log('ANGULAR BOOTSTRAP DONE.');
+    t1 = Date.now();
+    console.log("bootstrapped in " + (t1 - t0) + " ms");
+    tabris.ui.find("Page")[0].open();
+}, function (err) {
+    console.log('ERROR BOOTSTRAPPING ANGULAR');
+    var errorMessage = err.message + "\n\n" + err.stack;
+    console.log(errorMessage);
+});
