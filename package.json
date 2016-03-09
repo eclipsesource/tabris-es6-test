@@ -10,16 +10,11 @@
   },
   "scripts": {
     "lint": "jshint",
-    "build": "mkdir -p build/src/ && cp -a package.json node_modules/ src/ build/ && babel --retain-lines --out-dir build/src/ src/",
-    "serve": "cd build && hs -c-1"
+    "start": "hs -c-1"
   },
   "dependencies": {
-    "babel-polyfill": "^6.5.0",
     "tabris": "https://tabrisjs.com/downloads/nightly/tabris.tgz",
+    "tabris-ng": "https://github.com/eclipsesource/tabris-js-experiments/releases/download/tabris-ng-0.1.0/tabris-ng-0.1.0.tgz",
     "whatwg-fetch": "^0.11.0"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.6.4",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.6.4"
   }
 }

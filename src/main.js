@@ -1,7 +1,7 @@
 "use strict";
 var t0, t1;
 t0 = Date.now();
-var tabris_ng_1 = require('./tabris-ng');
+var tabris_ng_1 = require('tabris-ng');
 t1 = Date.now();
 console.log("loaded tabris-ng in " + (t1 - t0) + " ms");
 var app_components_1 = require('./app.components');
