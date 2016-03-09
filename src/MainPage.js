@@ -7,12 +7,13 @@ export default class AlbumPage extends Page {
       topLevel: true,
       title: "Tabris ES6 Tests"
     });
-    let textView = new TextView({
-      left: 16, right: 16, top: 16,
+  }
+
+  addLabel(text) {
+    new TextView({
+      left: 16, right: 16, top: "prev() 8",
+      text
     }).appendTo(this);
-    this.on("change:text", (page, text) => {
-      textView.set("text", text);
-    });
   }
 
 }
