@@ -10,16 +10,16 @@
   },
   "scripts": {
     "lint": "jshint",
-    "build": "mkdir -p build/src/ && cp -a package.json node_modules/ src/ build/ && babel --retain-lines --out-dir build/src/ src/",
-    "serve": "cd build && hs -c-1"
+    "build:transpile": "rm -r build/ && mkdir -p build/src/ && cp -a package.json node_modules/ src/ build/ && babel --compact false --out-dir build/src/ src/",
+    "build": "webpack --config webpack.config.js",
+    "start": "cd build && hs -c-1"
   },
   "dependencies": {
-    "babel-polyfill": "^6.5.0",
-    "tabris": "https://tabrisjs.com/downloads/nightly/tabris.tgz",
-    "whatwg-fetch": "^0.11.0"
+    "tabris": "https://tabrisjs.com/downloads/nightly/tabris.tgz"
   },
   "devDependencies": {
-    "babel-cli": "^6.6.4",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.6.4"
+    "promise": "^6.1.0",
+    "webpack": "^1.12.14",
+    "whatwg-fetch": "^0.11.0"
   }
 }

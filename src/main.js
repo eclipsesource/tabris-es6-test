@@ -1,22 +1,26 @@
-let promiseBefore = Promise;
-let t0 = Date.now();
-require("babel-polyfill/dist/polyfill.min.js");
-let t1 = Date.now();
-let promiseAfter = Promise;
+delete window.Promise;
+_require("./polyfill.min.js");
 
-require("whatwg-fetch");
+var page = new tabris.Page({ topLevel: true }).open();
 
-import MainPage from "./MainPage.js";
+function addLabel(message) {
+  new tabris.TextView({
+    left: 8, right: 8, top: "prev() 8", text: message
+  }).appendTo(page);
+}
 
-let page = new MainPage().open();
+addLabel("fetch");
+addLabel("loading...");
 
-page.addLabel(`
-Time to load polyfill: ${t1 - t0} ms.
-Promise was of type ${typeof promiseBefore}.
-Promise was ${promiseBefore === promiseAfter ? 'not replaced' : 'replaced'} by the polyfill.
-`.trim());
+fetch("http://192.168.6.141:8080/package.json")
+  .then(function(res) { return res.json(); })
+  .then(function(json) { addLabel("loaded: " + json.name); })
+  .catch(function(err) { addLabel("ERROR: " + err); });
 
-fetch("https://freegeoip.net/json/")
-  .then(res => res.json())
-  .then(json => page.addLabel(`IP: ${json.ip}, City: ${json.city}`))
-  .catch(err => page.addLabel(`ERROR: ${err}`));
+function _require(id) {
+  var t0 = Date.now();
+  var result = require(id);
+  var t1 = Date.now();
+  console.log("loaded " + id + " in " + (t1 - t0) + " ms");
+  return result;
+}
