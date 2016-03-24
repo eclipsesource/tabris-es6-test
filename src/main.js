@@ -1,11 +1,15 @@
+import Hello from "./Hello.js";
 
-import MainPage from "./MainPage.js";
+let hello = new Hello("world");
 
-var page = new MainPage().open();
+let page = tabris.create("Page", {
+  topLevel: true,
+  title: "Hello"
+}).open();
 
-fetch("https://raw.githubusercontent.com/eclipsesource/tabris-js/master/package.json")
-  .then(res => res.json())
-  .then(json => page.addLabel(`Current version: ${json.version}`))
-  .catch(err => page.addLabel(`ERROR: ${err}`));
+tabris.create("TextView", {
+  top: 12, left: 12,
+  text: hello.sayHello()
+}).appendTo(page);
 
-page.addLabel("loading...");
+page.open();

@@ -15,7 +15,7 @@
     "start": "hs -c-1"
   },
   "dependencies": {
-    "tabris": "^1.7.0"
+    "tabris": "1.6.0"
   },
   "devDependencies": {
     "babel-cli": "^6.6.5",
