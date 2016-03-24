@@ -1,6 +1,11 @@
-# Tabris.js test app for ES6
+# Tabris.js example app with ES6
 
-Provisional repository, will be deleted.
+**Provisional repository** for testing ES6 with Tabris.js, **will be deleted**.
+
+## Build and run locally:
+
+    npm run build:android
+    npm start
 
 License
 -------

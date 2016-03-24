@@ -2,7 +2,7 @@
 <widget id="tabris.es6.test" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>Tabris ES6 Test App</name>
   <description>
-    Temporary test app, will be deleted
+    Provisional example app
   </description>
   <content src="www"/>
   <access origin="*"/>
