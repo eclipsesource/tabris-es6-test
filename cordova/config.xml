@@ -4,6 +4,5 @@
   <description>
     Provisional example app
   </description>
-  <content src="www"/>
-  <access origin="*"/>
+  <plugin name="cordova-plugin-media" version="2.2.0" />
 </widget>
